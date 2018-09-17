@@ -1,14 +1,14 @@
+package Client;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.*;
+import java.util.Scanner;
 import java.util.Scanner;
 
 public class MyClient {
 
     public static void main(String[] args) throws Exception {
-
-
-
         //Socket s = new Socket("127.0.0.1", 2020);
 
 
@@ -17,7 +17,7 @@ public class MyClient {
         Socket socket = new Socket("127.0.0.1",2020); // Create and connect the socket
         System.out.println("Connection Established");
 
-        DataOutputStream dOut = new DataOutputStream(socket.getOutputStream());
+        DataOutputStream fromServer = new DataOutputStream(socket.getOutputStream());
         DataInputStream dIn = new DataInputStream(socket.getInputStream());
 
         boolean done = false;
@@ -27,16 +27,16 @@ public class MyClient {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Skriv din besked ");
             String namwe = scanner.nextLine();
-            dOut.writeByte(i);
-            dOut.writeUTF(namwe);
-            dOut.flush();
+            fromServer.writeByte(i);
+            fromServer.writeUTF(namwe);
+            fromServer.flush();
             System.out.println(dIn.readUTF());
 
 
 
             if (namwe.contains("done")){
                 System.out.println("Client lukker");
-                dOut.close();
+                fromServer.close();
             }
             i++;
         }
@@ -62,6 +62,6 @@ public class MyClient {
         //dOut.writeByte(-1);
         //dOut.flush();
 
-
+        //dOut.close();
     }
 }

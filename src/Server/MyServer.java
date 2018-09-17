@@ -1,4 +1,9 @@
-import java.io.*;
+package Server;
+
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
 import java.net.*;
 
 public class MyServer {
@@ -14,6 +19,9 @@ public class MyServer {
 
         DataInputStream dIn = new DataInputStream(so.getInputStream());
         DataOutputStream dOut = new DataOutputStream(so.getOutputStream());
+        DataOutputStream toClient = new DataOutputStream(so.getOutputStream());
+
+
         boolean done = false;
         while(!done) {
             byte messageType = dIn.readByte();
