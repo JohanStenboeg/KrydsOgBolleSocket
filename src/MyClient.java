@@ -1,3 +1,4 @@
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.*;
 import java.util.Scanner;
@@ -14,17 +15,21 @@ public class MyClient {
         System.out.println("Connection Established");
 
         DataOutputStream dOut = new DataOutputStream(socket.getOutputStream());
+        DataInputStream dIn = new DataInputStream(socket.getInputStream());
 
         boolean done = false;
         int i = 1;
         while(!done) {
 
             Scanner scanner = new Scanner(System.in);
-            System.out.println("first");
+            System.out.println("Skriv din besked ");
             String namwe = scanner.nextLine();
             dOut.writeByte(i);
             dOut.writeUTF(namwe);
             dOut.flush();
+            System.out.println(dIn.readUTF());
+
+
 
             if (namwe.contains("done")){
                 System.out.println("Client lukker");

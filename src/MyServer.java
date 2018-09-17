@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.*;
 
 public class MyServer {
@@ -14,11 +12,8 @@ public class MyServer {
         Socket so = s.accept();
         System.out.println("Connection Established");
 
-
-
-
         DataInputStream dIn = new DataInputStream(so.getInputStream());
-
+        DataOutputStream dOut = new DataOutputStream(so.getOutputStream());
         boolean done = false;
         while(!done) {
             byte messageType = dIn.readByte();
@@ -41,11 +36,12 @@ public class MyServer {
                     }
             }
 */
-         
+
          try {
              String line = dIn.readUTF();
              System.out.println(line);
            done = line.equals("done");
+           dOut.writeUTF("Serveren har modtaget dit svar : "+ line);
 
           } catch(Exception e) {
               System.out.println( "fejl");
