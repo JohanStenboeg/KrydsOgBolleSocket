@@ -14,16 +14,16 @@ public class MyServer {
         Socket so = s.accept();
         System.out.println("Connection Established");
 
-        System.out.println("message send!!");
 
-        System.out.println("Stops here");
+
+
         DataInputStream dIn = new DataInputStream(so.getInputStream());
 
         boolean done = false;
         while(!done) {
             byte messageType = dIn.readByte();
 
-            switch(messageType)
+          /*  switch(messageType)
             {
                 case 1: // Type A
                     System.out.println("Message A: " + dIn.readUTF());
@@ -36,10 +36,22 @@ public class MyServer {
                     System.out.println("Message C [2]: " + dIn.readUTF());
                     break;
                 default:
-                    done = true;
+                    if (dIn.readUTF()== "quit"){
+                        done = true;
+                    }
             }
-        }
+*/
+         
+         try {
+             String line = dIn.readUTF();
+             System.out.println(line);
+           done = line.equals("done");
 
-        dIn.close();
+          } catch(Exception e) {
+              System.out.println( "fejl");
+              done = true;
+            }
+
+
     }
-}
+}             }

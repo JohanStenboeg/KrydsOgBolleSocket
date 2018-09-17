@@ -1,5 +1,6 @@
 import java.io.DataOutputStream;
 import java.net.*;
+import java.util.Scanner;
 
 public class MyClient {
 
@@ -7,31 +8,52 @@ public class MyClient {
         //Socket s = new Socket("127.0.0.1", 2020);
 
 
+
+
         Socket socket = new Socket("127.0.0.1",2020); // Create and connect the socket
         System.out.println("Connection Established");
 
         DataOutputStream dOut = new DataOutputStream(socket.getOutputStream());
 
+        boolean done = false;
+        int i = 1;
+        while(!done) {
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("first");
+            String namwe = scanner.nextLine();
+            dOut.writeByte(i);
+            dOut.writeUTF(namwe);
+            dOut.flush();
+
+            if (namwe.contains("done")){
+                System.out.println("Client lukker");
+                dOut.close();
+            }
+            i++;
+        }
+
+
 // Send first message
-        dOut.writeByte(1);
-        dOut.writeUTF("This is the first type of message.");
-        dOut.flush(); // Send off the data
+       // dOut.writeByte(1);
+        //dOut.writeUTF(namwe);
+        //dOut.flush(); // Send off the data
 
 // Send the second message
-        dOut.writeByte(2);
-        dOut.writeUTF("This is the second type of message.");
-        dOut.flush(); // Send off the data
+     //   dOut.writeByte(2);
+      //  dOut.writeUTF(navn2);
+        //dOut.flush(); // Send off the data
 
 // Send the third message
-        dOut.writeByte(3);
-        dOut.writeUTF("This is the third type of message (Part 1).");
-        dOut.writeUTF("This is the third type of message (Part 2).");
-        dOut.flush(); // Send off the data
+        //dOut.writeByte(3);
+        //dOut.writeUTF("This is the third type of message (Part 1).");
+        //dOut.writeUTF(navn3);
+        //dOut.flush(); // Send off the data
 
 // Send the exit message
-        dOut.writeByte(-1);
-        dOut.flush();
+        //dOut.writeByte(-1);
+        //dOut.flush();
 
-        dOut.close();
+
     }
 }
