@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Board {
 
+    TicPrint ticPrint = new TicPrint();
     //Deklarere instance variabler.
     private char[][] board; //Spillet brættet, lavet af et 2 dimensionelt Array.
     private boolean xTurn; //Sandt hvis det er X's tur, false hvis det er O's tur.
