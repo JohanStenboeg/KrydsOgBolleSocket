@@ -14,7 +14,8 @@ public class CapClient {
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 
         //Scanner til at skrive besked
-        System.out.println("ENTER:");
+        System.out.println("Velkommen til kryds og bolle!");
+        System.out.println("Skriv dit navn :");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
 
@@ -44,17 +45,21 @@ public class CapClient {
             yourturn = true;
         }
 
+        /*
+        * SPILLET GÅR IGANG HER
+        * */
+
         //kører imens spillet kører
         while (!done) {
 
-            String namwe = " ";
+            int namwe = 0;
 
             //Hvis det er din tur, kan du skrive beskeder
             if (yourturn) {
-                System.out.println("Skriv din besked ");
-                namwe = scanner.nextLine();
+                System.out.println("Hvor vil du lave dit træk?");
+                namwe = scanner.nextInt();
                 dos.writeByte(i);
-                dos.writeUTF(namwe);
+                dos.writeInt(namwe);
                 dos.flush();
                 System.out.println(dis.readUTF());
                 //Ændrer det til ikke at være din tur.

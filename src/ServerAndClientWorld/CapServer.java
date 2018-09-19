@@ -24,7 +24,7 @@ public class CapServer {
 
         //Henter players navn og return en message der fortæller ham det.
         String playername1 = dis1.readUTF();
-        dos1.writeUTF("hello " + playername1 + " and welcome, youre player");
+        dos1.writeUTF("hello " + playername1 + " aka. X and welcome, youre player");
         //tildeler player number
         dos1.writeInt(1);
 
@@ -39,7 +39,7 @@ public class CapServer {
 
         //Henter hans navn og sender velkomst besked
         String playername2 = dis2.readUTF();
-        dos2.writeUTF("hello " + playername2 + " and welcome, youre player");
+        dos2.writeUTF("hello " + playername2 + " aka. O and welcome, youre player");
         //tildeler player number
         dos2.writeInt(2);
         //info til server
@@ -48,6 +48,12 @@ public class CapServer {
         //Fortæller p1 at han kan starte og p2 at han skal vente.
         dos1.writeUTF("You can start:");
         dos2.writeUTF("Wait for player 1 to make his move : ");
+
+
+
+        /*
+        * SPILLET STARTER
+        * */
 
         //Counter der tæller hvis tur det er.
         int counter = 1;
@@ -62,7 +68,7 @@ public class CapServer {
                 System.out.println("player 2 turn");
                 whosturn = 2;
             } else {
-                System.out.println("PLayer one turn");
+                System.out.println("PLayer 1 turn");
                 whosturn = 1;
             }
 
@@ -76,22 +82,27 @@ public class CapServer {
             //try catch til at hente og sende data med dos og dis
             try {
                 //line der printer fejl, hvis den ikke bliver tildelt en anden værdi
-                String line = "fejl";
+                int line ;
 
                 //Depending on hvis tur det er, henter den en string og souter
                 if (whosturn == 2) {
-                    line = dis2.readUTF();
+                    line = dis2.readInt();
                     System.out.println("Player 2: "+line);
                 } else {
-                    line = dis1.readUTF();
+                    line = dis1.readInt();
                     System.out.println("Player 1: "+line);
                 }
 
                 //Printer hvad den anden har skrevet
                 if (whosturn == 2) {
+                    //RETURN TICPRINT HER TIL BEGGET
+
                     dos2.writeUTF("Serveren har modtaget dit svar : " + line);
                     dos1.writeUTF("Serveren har modtaget den andens svar : " + line);
                 } else {
+                    //OGSÅ HER
+
+
                     dos1.writeUTF("Serveren har modtaget dit svar : " + line);
                     dos2.writeUTF("Serveren har modtaget den andens svar : " + line);
                 }
