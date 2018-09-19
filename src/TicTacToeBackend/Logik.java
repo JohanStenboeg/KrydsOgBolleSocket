@@ -10,7 +10,7 @@ public class Logik {
 
 
     //Metode til at placere et X eller O i brættet.
-    private String play(int input, boolean xTurn){
+    public String play(int input, boolean xTurn){
 
         //Tjekker om positionen er uden for brættet.
         if (input >= 0 && input <= 8) {
@@ -29,6 +29,23 @@ public class Logik {
             bræt[input] = 'O';
 
         return ticprint.printboard(bræt);
+    }
+
+
+    public String checkIfOver(){
+    if(){
+
+    }
+
+    else if(){
+
+    }
+
+    else{
+        return "nej";
+    }
+
+
     }
 
 
