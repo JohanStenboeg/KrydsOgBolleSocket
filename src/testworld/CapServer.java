@@ -26,7 +26,6 @@ public class CapServer implements Runnable {
         System.out.println("Server accepted " + playername1);
         System.out.println("Server is waiting for next opponent");
 
-
         Socket socket2 = serverSocket.accept();
         System.out.println("socket2 accepted");
         DataOutputStream dos2 = new DataOutputStream(socket2.getOutputStream());
@@ -39,8 +38,8 @@ public class CapServer implements Runnable {
         System.out.println("Server accepted " + playername2);
 
 
-        dos1.writeUTF("you can start");
-        dos2.writeUTF("you may begin");
+        dos1.writeUTF("You can start:");
+        dos2.writeUTF("Wait for player 1 to make his move : ");
 
         int counter = 1;
         int whosturn = 1;
