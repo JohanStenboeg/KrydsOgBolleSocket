@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Board {
 
+    TicPrint ticPrint = new TicPrint();
     //Deklarere instance variabler.
     private char[][] board; //Spillet brættet, lavet af et 2 dimensionelt Array.
     private boolean xTurn; //Sandt hvis det er X's tur, false hvis det er O's tur.
@@ -94,7 +95,7 @@ public class Board {
             //Tjekker om positionen er uden for brættet.
             if (row >= 0 && row <= 2 && column >= 0 && column <= 2) {
 
-                //Thekker om positionen allerede er optaget.
+                //Tjekker om positionen allerede er optaget.
                 if (board[row][column] != ' ')
                     System.out.println("Denne position er allerede taget.");
                 else
@@ -188,11 +189,10 @@ public class Board {
 
     private boolean boardFull() {
 
-        // Tjekker efter hvor mange spille pladser der er taget af enten X eller O
+        //Tjekker efter hvor mange spille pladser der er taget af enten X eller O
         int numSpotsFilled = 0;
 
         for (int r = 0; r < 3; r++) {
-
             for (int c = 0; c < 3; c++) {
                 if (board[r][c] == 'X' || board[r][c] == 'O')
                     numSpotsFilled++;
