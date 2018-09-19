@@ -38,20 +38,23 @@ public class Logik {
         char checkO = 'O';
         int sum = 0;
 
-    // Denne tjekker 1 2 3. Er lavet.
-        for(int x = 0; x < 2; x++){
+    // Denne tjekker 0 1 2. Er Done.
+        // checker for x
+        for(int x = 0; x < 3; x++){
         if(bræt[x]== checkX) {
             sum++;
         }
+
     }
 
         if (sum == 3){
             winner = true;
         }
 
-    // Denne skal tjekke 4 5 6
+    // Denne skal tjekke 3 4 5
+        // checker for x
         sum = 0;
-    for(int x = 0; x < 2; x++){
+    for(int x = 3; x < 6; x++){
         if(bræt[x]== checkX) {
             sum++;
         }
@@ -60,9 +63,10 @@ public class Logik {
             winner = true;
         }
 
-        // Denne skal tjekke 7 8 9
+        // Denne skal tjekke 6 7 8
+        // checker for x
         sum = 0;
-        for(int x = 0; x < 2; x++){
+        for(int x = 6; x < 9; x++){
             if(bræt[x]== checkX) {
                 sum++;
             }
@@ -71,51 +75,57 @@ public class Logik {
             winner = true;
         }
 
-        // Denne skal tjekke 1 4 7
+        // Denne skal tjekke 0 3 6
+        // checker for x
         sum = 0;
-        for(int x = 0; x < 2; x++){
+        for(int x = 0; x < 9; x++){
             if(bræt[x]== checkX) {
-                sum++;
+                sum=+3;
+
+            }
+        }
+        if (sum == 3){
+            winner = true;
+        }
+        // Denne skal tjekke 1 4 7
+        // checker for x
+        sum = 0;
+        for(int x = 1; x < 9; x++){
+            if(bræt[x]== checkX) {
+                sum=+3;
             }
         }
         if (sum == 3){
             winner = true;
         }
         // Denne skal tjekke 2 5 8
+        // checker for x
         sum = 0;
-        for(int x = 0; x < 2; x++){
+        for(int x = 2; x < 9; x++){
             if(bræt[x]== checkX) {
-                sum++;
+                sum=+3;
             }
         }
         if (sum == 3){
             winner = true;
         }
-        // Denne skal tjekke 3 6 9
+        // Denne skal tjekke 0 4 8
+        // checker for x
         sum = 0;
         for(int x = 0; x < 2; x++){
             if(bræt[x]== checkX) {
-                sum++;
+                sum=+4;
             }
         }
         if (sum == 3){
             winner = true;
         }
-        // Denne skal tjekke 1 5 9
+        // Denne skal tjekke 2 4 6
+        // checker for x
         sum = 0;
-        for(int x = 0; x < 2; x++){
+        for(int x = 2; x < 9; x++){
             if(bræt[x]== checkX) {
-                sum++;
-            }
-        }
-        if (sum == 3){
-            winner = true;
-        }
-        // Denne skal tjekke 3 5 8
-        sum = 0;
-        for(int x = 0; x < 2; x++){
-            if(bræt[x]== checkX) {
-                sum++;
+                sum=+4;
             }
         }
         if (sum == 3){
@@ -128,8 +138,101 @@ public class Logik {
 
 
     else if(){
+            // Denne tjekker 0 1 2. Er Done.
+            // checker for o
+            for(int o = 0; o < 3; o++){
+                if(bræt[o]== checkO) {
+                    sum++;
+                }
 
-    }
+            }
+
+            if (sum == 3){
+                winner = true;
+            }
+
+            // Denne skal tjekke 3 4 5
+            // checker for o
+            sum = 0;
+            for(int o = 3; o < 6; o++){
+                if(bræt[o]== checkO) {
+                    sum++;
+                }
+            }
+            if (sum == 3){
+                winner = true;
+            }
+
+            // Denne skal tjekke 6 7 8
+            // checker for o
+            sum = 0;
+            for(int o = 6; o < 9; o++){
+                if(bræt[o]== checkO) {
+                    sum++;
+                }
+            }
+            if (sum == 3){
+                winner = true;
+            }
+
+            // Denne skal tjekke 0 3 6
+            // checker for o
+            sum = 0;
+            for(int o = 0; o < 9; o++){
+                if(bræt[o]== checkO) {
+                    sum=+3;
+
+                }
+            }
+            if (sum == 3){
+                winner = true;
+            }
+            // Denne skal tjekke 1 4 7
+            // checker for o
+            sum = 0;
+            for(int o = 1; o < 9; o++){
+                if(bræt[o]== checkO) {
+                    sum=+3;
+                }
+            }
+            if (sum == 3){
+                winner = true;
+            }
+            // Denne skal tjekke 2 5 8
+            // checker for o
+            sum = 0;
+            for(int o = 2; o < 9; o++){
+                if(bræt[o]== checkO) {
+                    sum=+3;
+                }
+            }
+            if (sum == 3){
+                winner = true;
+            }
+            // Denne skal tjekke 0 4 8
+            // checker for o
+            sum = 0;
+            for(int o = 0; o < 2; o++){
+                if(bræt[o]== checkO) {
+                    sum=+4;
+                }
+            }
+            if (sum == 3){
+                winner = true;
+            }
+            // Denne skal tjekke 2 4 6
+            // checker for o
+            sum = 0;
+            for(int o = 2; o < 9; o++){
+                if(bræt[o]== checkO) {
+                    sum=+4;
+                }
+            }
+            if (sum == 3){
+                winner = true;
+            }
+
+        }
 
     else if(){
 
