@@ -6,11 +6,15 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.*;
 
-public class MyServer {
+
+
+public class MyServer  {
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello World!");
 
+
+
+        System.out.println("Hello World!");
         ServerSocket s = new ServerSocket(2020);
         System.out.println("Server waiting for connection....");
 
@@ -19,31 +23,13 @@ public class MyServer {
 
         DataInputStream dIn = new DataInputStream(so.getInputStream());
         DataOutputStream dOut = new DataOutputStream(so.getOutputStream());
-        DataOutputStream toClient = new DataOutputStream(so.getOutputStream());
+
 
 
         boolean done = false;
-        while(!done) {
-            byte messageType = dIn.readByte();
 
-          /*  switch(messageType)
-            {
-                case 1: // Type A
-                    System.out.println("Message A: " + dIn.readUTF());
-                    break;
-                case 2: // Type B
-                    System.out.println("Message B: " + dIn.readUTF());
-                    break;
-                case 3: // Type C
-                    System.out.println("Message C [1]: " + dIn.readUTF());
-                    System.out.println("Message C [2]: " + dIn.readUTF());
-                    break;
-                default:
-                    if (dIn.readUTF()== "quit"){
-                        done = true;
-                    }
-            }
-*/
+        while(!done)
+        {
 
          try {
              String line = dIn.readUTF();
@@ -55,7 +41,7 @@ public class MyServer {
               System.out.println( "fejl");
               done = true;
             }
-
+        }
 
     }
-}             }
+}

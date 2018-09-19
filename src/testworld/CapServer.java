@@ -47,10 +47,6 @@ public class CapServer implements Runnable {
         boolean done = false;
         while(!done) {
 
-
-
-
-
             if (counter % 2 == 0) {
                 System.out.println("player 2 turn");
                 whosturn=2;
