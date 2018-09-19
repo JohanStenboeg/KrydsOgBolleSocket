@@ -44,7 +44,7 @@ public class CapServer implements Runnable {
 
         int counter = 1;
         int whosturn = 1;
-        //MATHIAS KODE
+        //MATHIAS KODEs
         boolean done = false;
         while(!done) {
 

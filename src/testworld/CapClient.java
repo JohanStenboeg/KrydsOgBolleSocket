@@ -27,7 +27,7 @@ public class CapClient {
 
 
 
-        //MATHIAS KODE
+        //MATHIAS KODEs
         boolean done = false;
         int i = 1;
 
