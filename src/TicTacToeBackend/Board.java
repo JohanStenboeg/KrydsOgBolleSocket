@@ -94,7 +94,7 @@ public class Board {
             //Tjekker om positionen er uden for brættet.
             if (row >= 0 && row <= 2 && column >= 0 && column <= 2) {
 
-                //Thekker om positionen allerede er optaget.
+                //Tjekker om positionen allerede er optaget.
                 if (board[row][column] != ' ')
                     System.out.println("Denne position er allerede taget.");
                 else
