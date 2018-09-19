@@ -39,7 +39,7 @@ public class Logik {
         int sum = 0;
 
     // Denne tjekker 1 2 3. Er lavet.
-        for(int x = 0; x < 2; x++){
+        for(int x = 0; x < 3; x++){
         if(bræt[x]== checkX) {
             sum++;
         }
