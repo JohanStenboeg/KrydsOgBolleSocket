@@ -8,8 +8,6 @@ import java.util.Scanner;
 public class CapClient {
     public static void main(String[] args) throws Exception {
 
-
-
         Socket socket = new Socket("localhost", 4444);
         DataInputStream dis = new DataInputStream(socket.getInputStream());
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
@@ -20,31 +18,61 @@ public class CapClient {
 
         dos.writeUTF(name);
 
-        System.out.println(dis.readUTF()+"1");
+        String incMessage1 = dis.readUTF();
+        int playerNumber = dis.readInt();
 
-        System.out.println(dis.readUTF()+"2");
+        System.out.println(incMessage1+" "+playerNumber);
+
+        System.out.println(dis.readUTF()+": message 2");
 
 
 
         //MATHIAS KODE
         boolean done = false;
         int i = 1;
+
+
+        boolean yourturn = false;
+
+        if(playerNumber==1){
+            yourturn=true;
+        }
+
         while(!done) {
 
-            System.out.println("Skriv din besked ");
-            String namwe = scanner.nextLine();
-            dos.writeByte(i);
-            dos.writeUTF(namwe);
-            dos.flush();
-            System.out.println(dis.readUTF());
+            String namwe = " ";
+            if(yourturn) {
+                System.out.println("Skriv din besked ");
+                namwe = scanner.nextLine();
+                dos.writeByte(i);
+                dos.writeUTF(namwe);
+                dos.flush();
+                System.out.println(dis.readUTF());
+                yourturn = !yourturn;
+            }else{
+                System.out.println(dis.readUTF());
+                yourturn = !yourturn;
+            }
 
-
-            if (namwe.contains("done")){
+            /*if (namwe.contains("done")){
                 System.out.println("Client lukker");
                 dos.close();
-            }
+            }*/
+
             i++;
+            /*
+            boolean sleep = true;
+            while(!yourturn){
+                Thread.sleep(50);
+                if(dis.readUTF()=="YourTurn"){
+                    yourturn = false;
+                }
+
+            }*/
+
+
         }
+
 
     }
 

@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class CapServer {
+public class CapServer implements Runnable {
     static final int PORT= 4444;
 
     public static void main(String[] args) throws  Exception {
@@ -19,7 +19,9 @@ public class CapServer {
         DataInputStream dis1 = new DataInputStream(socket1.getInputStream());
 
         String playername1 = dis1.readUTF();
-        dos1.writeUTF("hello "+ playername1+" and welcome, youre player 1");
+        dos1.writeUTF("hello "+ playername1+" and welcome, youre player");
+        //player number
+        dos1.writeInt(1);
 
         System.out.println("Server accepted " + playername1);
         System.out.println("Server is waiting for next opponent");
@@ -31,7 +33,8 @@ public class CapServer {
         DataInputStream dis2 = new DataInputStream(socket2.getInputStream());
 
         String playername2 = dis2.readUTF();
-        dos2.writeUTF("hello "+ playername2+" and welcome, youre player 1");
+        dos2.writeUTF("hello "+ playername2+" and welcome, youre player");
+        dos2.writeInt(2);
 
         System.out.println("Server accepted " + playername2);
 
@@ -39,42 +42,80 @@ public class CapServer {
         dos1.writeUTF("you can start");
         dos2.writeUTF("you may begin");
 
-
+        int counter = 1;
+        int whosturn = 1;
         //MATHIAS KODE
         boolean done = false;
         while(!done) {
-            byte messageType = dis1.readByte();
-            byte messageType2 = dis2.readByte();
 
 
-            try {
-                String line = dis1.readUTF();
-                System.out.println(line);
-                done = line.equals("done");
-                dos1.writeUTF("Serveren har modtaget dit svar : "+ line);
 
-            } catch(Exception e) {
-                System.out.println( "fejl");
-                done = true;
+
+
+            if (counter % 2 == 0) {
+                System.out.println("player 2 turn");
+                whosturn=2;
+            }else{
+                System.out.println("PLayer one turn");
+                whosturn=1;
             }
 
-            try {
-                String line2 = dis2.readUTF();
-                System.out.println(line2);
-                done = line2.equals("done");
-                dos2.writeUTF("Serveren har modtaget dit svar : "+ line2);
+            if(whosturn ==1){
+                byte messageType = dis1.readByte();
+            }else{
+                byte messageType2 = dis2.readByte();
+            }
+                    System.out.println("stopper den her? ");
+                try {
+                String line = "fejl";
+                if(whosturn == 2) {
+                    line = dis2.readUTF();
+                    System.out.println("tst"+line);
+                }else{
+                    line = dis1.readUTF();
+                    System.out.println(line);
+                }
+                    //done = line.equals("done");
+                    if(whosturn == 2) {
+                        dos2.writeUTF("Serveren har modtaget dit svar : " + line);
+                        dos1.writeUTF("Serveren har modtaget den andens svar : " + line);
+                    }else{
+                        dos1.writeUTF("Serveren har modtaget dit svar : " + line);
+                        dos2.writeUTF("Serveren har modtaget den andens svar : " + line);
+                    }
 
-            } catch(Exception e) {
-                System.out.println( "fejl");
-                done = true;
+
+                    counter++;
+                    //Prøv AT SKRIV DET ANDET HER:
+
+                } catch (Exception e) {
+                    System.out.println("fejl");
+                    //done = true;
+                }
+
+
+                try {
+                    //String line2 = dis2.readUTF();
+                    //System.out.println(line2);
+                    //done = line2.equals("done");
+                    //dos2.writeUTF("Serveren har modtaget dit svar : " + line2);
+
+                } catch (Exception e) {
+                    System.out.println("fejl");
+                    //done = true;
+                }
+
             }
 
 
-        }
 
 
 
 
     }
 
+    @Override
+    public void run() {
+
+    }
 }
