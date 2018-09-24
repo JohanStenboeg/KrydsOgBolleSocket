@@ -137,6 +137,10 @@ public class Logik {
             winnerX = true;
         }
 
+        if(winnerX)
+            return "X vandt";
+
+
 
         // Start på tjek af O
         // Denne tjekker 0 1 2. Er Done.
@@ -233,6 +237,9 @@ public class Logik {
             winnerO = true;
         }
 
+        if(winnerO)
+            return "O vandt";
+
 
         //Start på tjek af draw.
         //Tjekker for både X og O.
@@ -247,9 +254,12 @@ public class Logik {
             draw = true;
         }
 
-    return String; // Skal returnere enten x, o eller draw.
+        if(draw)
+            return "Det blev udafgjordt.";
 
-    } //Slut på checkIfOver()
+
+
+    } //Slut på checkIfOver() ????????????????????????????
 
     //return statement
 
