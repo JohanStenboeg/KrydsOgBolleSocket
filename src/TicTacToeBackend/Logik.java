@@ -9,6 +9,7 @@ public class Logik {
     private boolean winnerX = false; // Antager som udgangspunkt at X ikke har vundet.
     private boolean winnerO = false; // Antager som udgangspunkt at O ikke har vundet.
     private boolean draw = false; // Antager som udgangspunkt det ikke er draw.
+    private String result = ""; // Resultat
 
 
 
@@ -138,7 +139,7 @@ public class Logik {
         }
 
         if(winnerX)
-            return "X vandt";
+            result = "X vandt";
 
 
 
@@ -238,7 +239,7 @@ public class Logik {
         }
 
         if(winnerO)
-            return "O vandt";
+            result = "O vandt";
 
 
         //Start på tjek af draw.
@@ -255,11 +256,10 @@ public class Logik {
         }
 
         if(draw)
-            return "Det blev udafgjordt.";
+            result = "Det blev udafgjort.";
 
-
-
-    } //Slut på checkIfOver() ????????????????????????????
+        return result;
+    } //Slut på checkIfOver()
 
     //return statement
 
