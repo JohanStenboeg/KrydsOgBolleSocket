@@ -191,7 +191,7 @@ public class Logik {
         }
 
         if(winnerX) {
-            result = "X vandt";
+            result = "-----X VANDT-----\n "+ticprint.printboard(bræt)+" ";
         }
 
 
@@ -291,7 +291,7 @@ public class Logik {
         }
 
         if(winnerO)
-            result = "O vandt";
+            result = "-----O VANDT----- \n"+ticprint.printboard(bræt)+"\n (•_•) ( •_•)>⌐■-■ (⌐■_■) ";
 
 
         //Start på tjek af draw.
@@ -308,7 +308,7 @@ public class Logik {
         }
 
         if(draw)
-            result = "Det blev uafgjort.";
+            result = "-----DET BLEV UDAFGJORT-----\n"+ticprint.printboard(bræt)+" ";
 
         return result;
     } //Slut på checkIfOver()
