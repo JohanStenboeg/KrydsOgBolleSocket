@@ -1,5 +1,7 @@
 package ServerAndClientWorld;
 
+import TicTacToeBackend.Logik;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
@@ -55,6 +57,8 @@ public class CapServer {
         * SPILLET STARTER
         * */
 
+        Logik logik = new Logik();
+
         //Counter der tæller hvis tur det er.
         int counter = 1;
         //Hvilken players tur det er, 1 eller 2.
@@ -79,6 +83,8 @@ public class CapServer {
                 byte messageType2 = dis2.readByte();
             }
 
+            String printeren = " ";
+
             //try catch til at hente og sende data med dos og dis
             try {
                 //line der printer fejl, hvis den ikke bliver tildelt en anden værdi
@@ -87,24 +93,34 @@ public class CapServer {
                 //Depending on hvis tur det er, henter den en string og souter
                 if (whosturn == 2) {
                     line = dis2.readInt();
+                    printeren = logik.play(line,false);
                     System.out.println("Player 2: "+line);
+                    System.out.println(printeren);
                 } else {
                     line = dis1.readInt();
+                    printeren = logik.play(line,true);
                     System.out.println("Player 1: "+line);
+                    System.out.println(printeren);
                 }
 
                 //Printer hvad den anden har skrevet
                 if (whosturn == 2) {
                     //RETURN TICPRINT HER TIL BEGGET
 
-                    dos2.writeUTF("Serveren har modtaget dit svar : " + line);
-                    dos1.writeUTF("Serveren har modtaget den andens svar : " + line);
+                    dos2.writeUTF(printeren);
+                    dos1.writeUTF(printeren);
+
+                    //dos2.writeUTF("Serveren har modtaget dit svar : " + line);
+                    //dos1.writeUTF("Serveren har modtaget den andens svar : " + line);
                 } else {
                     //OGSÅ HER
 
 
-                    dos1.writeUTF("Serveren har modtaget dit svar : " + line);
-                    dos2.writeUTF("Serveren har modtaget den andens svar : " + line);
+                    dos2.writeUTF(printeren);
+                    dos1.writeUTF(printeren);
+
+//                    dos1.writeUTF("Serveren har modtaget dit svar : " + line);
+  //                  dos2.writeUTF("Serveren har modtaget den andens svar : " + line);
                 }
 
                 //tæller en til counter
