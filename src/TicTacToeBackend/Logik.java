@@ -213,9 +213,9 @@ public class Logik {
         // Denne skal tjekke 0 3 6
         // checker for o
         sumO = 0;
-        for (int o = 0; o < 9; o++) {
+        for (int o = 0; o < 9; o+=3) {
             if (bræt[o] == checkO) {
-                sumO = +3;
+                sumO++;
 
             }
         }
@@ -225,9 +225,9 @@ public class Logik {
         // Denne skal tjekke 1 4 7
         // checker for o
         sumO = 0;
-        for (int o = 1; o < 9; o++) {
+        for (int o = 1; o < 9; o+=3) {
             if (bræt[o] == checkO) {
-                sumO = +3;
+                sumO++;
             }
         }
         if (sumO == 3) {
@@ -236,9 +236,9 @@ public class Logik {
         // Denne skal tjekke 2 5 8
         // checker for o
         sumO = 0;
-        for (int o = 2; o < 9; o++) {
+        for (int o = 2; o < 9; o+=3) {
             if (bræt[o] == checkO) {
-                sumO = +3;
+                sumO++;
             }
         }
         if (sumO == 3) {
@@ -247,9 +247,9 @@ public class Logik {
         // Denne skal tjekke 0 4 8
         // checker for o
         sumO = 0;
-        for (int o = 0; o < 2; o++) {
+        for (int o = 0; o < 2; o+=4) {
             if (bræt[o] == checkO) {
-                sumX = +4;
+                sumX++;
             }
         }
         if (sumO == 3) {
@@ -258,9 +258,9 @@ public class Logik {
         // Denne skal tjekke 2 4 6
         // checker for o
         sumO = 0;
-        for (int o = 2; o < 9; o++) {
+        for (int o = 2; o < 9; o+=4) {
             if (bræt[o] == checkO) {
-                sumX = +4;
+                sumX++;
             }
         }
         if (sumO == 3) {
