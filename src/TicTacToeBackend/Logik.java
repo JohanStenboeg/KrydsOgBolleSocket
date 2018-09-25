@@ -12,31 +12,54 @@ public class Logik {
     private String result = ""; // Resultat
 
 
+    private boolean returnIkkeBoards = false;
+    private String andenMessage = "Fejl";
+    private boolean canWeDoIt = true;
+
     public String getPrintBræt() {
         return ticprint.printboard(bræt);
     }
 
     //Metode til at placere et X eller O i brættet.
     public String play(int input, boolean xTurn){
+        returnIkkeBoards = false;
+        canWeDoIt = true;
 
         //Tjekker om positionen er uden for brættet.
         if (input >= 0 && input <= 8) {
-
+            System.out.println("Hasagi");
             //Tjekker om positionen allerede er optaget.
-            if (bræt[input] != ' ')
-                System.out.println("Denne position er allerede taget.");
-        } else
-            System.out.println("Denne position er ikke inden for brættes spille rammer.");
+            if (bræt[input] != ' '){
+                andenMessage= "Denne position er allerede taget.";
 
-        //Udfylder brættet med enten X eller O såfremt det er en valid position.
-        if (xTurn)
+                returnIkkeBoards = true;
+                canWeDoIt = false;
+            }
+        } else {
+            andenMessage = "Denne position er ikke inden for brættes spille rammer.";
+            returnIkkeBoards = true;
+            canWeDoIt = false;
+        }
 
-            bræt[input] = 'X';
-        else
-            bræt[input] = 'O';
 
+        if(canWeDoIt==true) {
+            //Udfylder brættet med enten X eller O såfremt det er en valid position.
+            if (xTurn)
+                bræt[input] = 'X';
+            else
+                bræt[input] = 'O';
+        }
         System.out.println(checkIfOver());
-        return ticprint.printboard(bræt);
+
+        if(returnIkkeBoards==true){
+            return andenMessage;
+
+        }else if(winnerX==true || winnerO == true ||draw==true){
+            return checkIfOver();
+        }
+        else {
+            return ticprint.printboard(bræt);
+        }
     }
 
 
