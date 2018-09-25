@@ -12,6 +12,9 @@ public class Logik {
     private String result = ""; // Resultat
 
 
+    public String getPrintBræt() {
+        return ticprint.printboard(bræt);
+    }
 
     //Metode til at placere et X eller O i brættet.
     public String play(int input, boolean xTurn){
@@ -32,6 +35,7 @@ public class Logik {
         else
             bræt[input] = 'O';
 
+        System.out.println(checkIfOver());
         return ticprint.printboard(bræt);
     }
 
@@ -49,6 +53,7 @@ public class Logik {
         for (int x = 0; x < 3; x++) {
             if (bræt[x] == checkX) {
                 sumX++;
+                System.out.println("1 "+ x);
             }
 
         }
@@ -56,12 +61,16 @@ public class Logik {
         if (sumX == 3) {
             winnerX = true;
         }
-
         // Denne skal tjekke 3 4 5
         // checker for x
         sumX = 0;
+
+
+
         for (int x = 3; x < 6; x++) {
             if (bræt[x] == checkX) {
+                System.out.println("2"+sumX);
+
                 sumX++;
             }
         }
@@ -72,8 +81,13 @@ public class Logik {
         // Denne skal tjekke 6 7 8
         // checker for x
         sumX = 0;
+
+
+
         for (int x = 6; x < 9; x++) {
             if (bræt[x] == checkX) {
+                System.out.println("3"+sumX);
+
                 sumX++;
             }
         }
@@ -84,9 +98,13 @@ public class Logik {
         // Denne skal tjekke 0 3 6
         // checker for x
         sumX = 0;
-        for (int x = 0; x < 9; x++) {
+
+
+        for (int x = 0; x < 9; x+=3) {
             if (bræt[x] == checkX) {
-                sumX = +3;
+                System.out.println("4"+sumX);
+
+                sumX ++;
 
             }
         }
@@ -96,9 +114,12 @@ public class Logik {
         // Denne skal tjekke 1 4 7
         // checker for x
         sumX = 0;
-        for (int x = 1; x < 9; x++) {
+
+        for (int x = 1; x < 9; x+=3) {
             if (bræt[x] == checkX) {
-                sumX = +3;
+                System.out.println("5"+sumX);
+
+                sumX ++;
             }
         }
         if (sumX == 3) {
@@ -107,9 +128,11 @@ public class Logik {
         // Denne skal tjekke 2 5 8
         // checker for x
         sumX = 0;
-        for (int x = 2; x < 9; x++) {
+        for (int x = 2; x < 9; x+=3) {
             if (bræt[x] == checkX) {
-                sumX = +3;
+                System.out.println("6"+sumX);
+
+                sumX ++;
             }
         }
         if (sumX == 3) {
@@ -118,29 +141,35 @@ public class Logik {
         // Denne skal tjekke 0 4 8
         // checker for x
         sumX = 0;
-        for (int x = 0; x < 2; x++) {
+        for (int x = 0; x < 9; x+=4) {
             if (bræt[x] == checkX) {
-                sumX = +4;
+                System.out.println("7"+sumX);
+
+                sumX ++;
             }
         }
+
+
         if (sumX == 3) {
             winnerX = true;
         }
         // Denne skal tjekke 2 4 6
         // checker for x
         sumX = 0;
-        for (int x = 2; x < 9; x++) {
+        for (int x = 2; x < 9; x+=4) {
             if (bræt[x] == checkX) {
-                sumX = +4;
+                System.out.println("8"+sumX);
+
+                sumX ++;
             }
         }
         if (sumX == 3) {
             winnerX = true;
         }
 
-        if(winnerX)
+        if(winnerX) {
             result = "X vandt";
-
+        }
 
 
         // Start på tjek af O
@@ -256,7 +285,7 @@ public class Logik {
         }
 
         if(draw)
-            result = "Det blev udafgjort.";
+            result = "Det blev uafgjort.";
 
         return result;
     } //Slut på checkIfOver()
