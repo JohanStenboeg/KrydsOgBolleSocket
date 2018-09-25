@@ -1,6 +1,7 @@
 package ServerAndClientWorld;
 
 import TicTacToeBackend.Logik;
+import TicTacToeBackend.TicPrint;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,6 +13,10 @@ public class CapServer {
     static final int PORT = 4444;
 
     public static void main(String[] args) throws Exception {
+        //TicPrint
+        TicPrint ticPrint = new TicPrint();
+
+
         //Åbner socket på PORT
         ServerSocket serverSocket = new ServerSocket(PORT, 2);
 
@@ -26,7 +31,7 @@ public class CapServer {
 
         //Henter players navn og return en message der fortæller ham det.
         String playername1 = dis1.readUTF();
-        dos1.writeUTF("hello " + playername1 + " aka. X and welcome, youre player");
+        dos1.writeUTF("hello " + playername1 + " aka. X and welcome, youre player player 1\n"+ticPrint.printBoardStart());
         //tildeler player number
         dos1.writeInt(1);
 
@@ -41,7 +46,7 @@ public class CapServer {
 
         //Henter hans navn og sender velkomst besked
         String playername2 = dis2.readUTF();
-        dos2.writeUTF("hello " + playername2 + " aka. O and welcome, youre player");
+        dos2.writeUTF("hello " + playername2 + " aka. O and welcome, youre player 2\n"+ticPrint.printBoardStart());
         //tildeler player number
         dos2.writeInt(2);
         //info til server
