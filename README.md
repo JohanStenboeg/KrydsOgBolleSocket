@@ -1,7 +1,8 @@
-# KrydsOgBolleSocket  
-**Et eventyr gennem tid og rum**  
-  
-Hvis man lyst til at spille spillet så husk at ændre IP'en i socket'en i CapCLient.java  
+# Kryds Og Bolle - Socket programmering  
+
+> Disclaimer: Når man vil spille spillet, skal man gå ind og ændre IP-addressen i Java klassen 'CapClient.java'. 
+> Dette gør du her:
+![hey](https://prnt.sc/kyxele)
 
   
     
