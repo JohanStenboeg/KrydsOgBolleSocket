@@ -2,7 +2,7 @@
 
 > Disclaimer: Når man vil spille spillet, skal man gå ind og ændre IP-addressen i Java klassen 'CapClient.java'. 
 > Dette gør du her:
-![hey](https://prnt.sc/kyxele)
+!(https://imgur.com/a/cWoUEvr)
 
   
     
